@@ -1,127 +1,213 @@
-````markdown
 # 🚀 Task 1 — Node.js CI/CD Pipeline with GitHub Actions & Docker
 
-[![Node.js](https://img.shields.io/badge/Node.js-20-339933?logo=node.js&logoColor=white)](https://nodejs.org/)
-[![Docker](https://img.shields.io/badge/Docker-Containerized-2496ED?logo=docker&logoColor=white)](https://www.docker.com/)
-[![GitHub Actions](https://img.shields.io/badge/GitHub%20Actions-CI%2FCD-2088FF?logo=githubactions&logoColor=white)](https://github.com/features/actions)
-[![Docker Hub](https://img.shields.io/badge/Docker%20Hub-Image%20Registry-2496ED?logo=docker&logoColor=white)](https://hub.docker.com/)
-
-> A practical DevOps internship project demonstrating Node.js application development, Git version control, Docker containerization, and automated CI/CD using GitHub Actions.
+> A practical DevOps internship project demonstrating Node.js application development, Git version control, Docker containerization, GitHub Actions CI/CD, Docker Hub integration, secure GitHub Secrets, and pipeline troubleshooting.
 
 ---
 
-## 📌 Project Overview
+## 📌 Table of Contents
 
-This project implements a basic **CI/CD pipeline for a Node.js application**.
-
-The pipeline automatically:
-
-- Checks out the source code
-- Sets up Node.js
-- Installs dependencies
-- Validates the Node.js code
-- Logs in to Docker Hub securely
-- Builds a Docker image
-- Pushes the image to Docker Hub
-
----
-
-## 🔄 CI/CD Pipeline
-
-```text
-                 👨‍💻 Developer
-                       │
-                       │ git push
-                       ▼
-                ┌─────────────┐
-                │   GitHub    │
-                │    main     │
-                └──────┬──────┘
-                       │
-                       ▼
-             ┌───────────────────┐
-             │  GitHub Actions   │
-             └─────────┬─────────┘
-                       │
-             ┌─────────▼─────────┐
-             │  Checkout Code    │
-             └─────────┬─────────┘
-                       │
-             ┌─────────▼─────────┐
-             │ Setup Node.js 20  │
-             └─────────┬─────────┘
-                       │
-             ┌─────────▼─────────┐
-             │ Install Packages  │
-             └─────────┬─────────┘
-                       │
-             ┌─────────▼─────────┐
-             │ Validate Code     │
-             └─────────┬─────────┘
-                       │
-             ┌─────────▼─────────┐
-             │ Docker Hub Login  │
-             └─────────┬─────────┘
-                       │
-             ┌─────────▼─────────┐
-             │ Docker Build      │
-             └─────────┬─────────┘
-                       │
-             ┌─────────▼─────────┐
-             │ Docker Hub Push   │
-             └─────────┬─────────┘
-                       │
-                       ▼
-                 🐳 Docker Hub
-````
-
-> **Note:** This project builds and pushes the Docker image to Docker Hub. AWS EC2 or production deployment is not implemented in this task.
+* 🎯 Project Overview
+* 🛠️ Tools Used
+* 📁 Project Structure
+* 🔄 CI/CD Workflow
+* ⚙️ GitHub Actions Pipeline
+* 🐳 Docker Configuration
+* 🔐 GitHub Secrets
+* 🧪 Application Testing
+* ❌ Error Encountered & Fix
+* 📦 Docker Hub
+* 📚 Documentation
+* 🎓 What I Learned
+* 🧠 Key Concepts
+* 📸 Evidence
+* 🚀 Future Improvements
+* ✅ Project Status
+* 🏁 Conclusion
 
 ---
 
-## 🛠️ Tech Stack
+## 🎯 Project Overview
 
-| Technology     | Purpose                 |
-| -------------- | ----------------------- |
-| Node.js 20     | Application runtime     |
-| JavaScript     | Application development |
-| Git            | Version control         |
-| GitHub         | Source code repository  |
-| GitHub Actions | CI/CD automation        |
-| Docker         | Containerization        |
-| Docker Hub     | Docker image registry   |
-| VS Code        | Development environment |
+The objective of this project was to build a basic **CI/CD pipeline for a Node.js application** using GitHub Actions and Docker.
+
+The project demonstrates how a developer can:
+
+* Create a Node.js application
+* Manage source code using Git and GitHub
+* Containerize the application using Docker
+* Automate validation using GitHub Actions
+* Build a Docker image automatically
+* Authenticate securely with Docker Hub
+* Push the Docker image to Docker Hub
+* Troubleshoot a failed CI/CD workflow
 
 ---
 
-## 📂 Project Structure
+## 🛠️ Tools Used
+
+| Tool           | Purpose                      |
+| -------------- | ---------------------------- |
+| Node.js 20     | Application runtime          |
+| JavaScript     | Application development      |
+| Git            | Version control              |
+| GitHub         | Remote repository            |
+| GitHub Actions | CI/CD automation             |
+| Docker         | Application containerization |
+| Docker Hub     | Docker image registry        |
+| VS Code        | Development environment      |
+
+---
+
+## 📁 Project Structure
 
 ```text
 Task-1-CICD/
 │
-├── .github/
-│   └── workflows/
-│       └── main.yml
+├── 📂 .github/
+│   └── 📂 workflows/
+│       └── 📄 main.yml
 │
-├── Dockerfile
-├── package.json
-├── server.js
-└── README.md
+├── 📄 server.js
+├── 📄 package.json
+├── 📄 Dockerfile
+└── 📄 README.md
+```
+
+### File Purpose
+
+| File / Folder                | Purpose                                |
+| ---------------------------- | -------------------------------------- |
+| `server.js`                  | Node.js HTTP application               |
+| `package.json`               | Project metadata and npm scripts       |
+| `Dockerfile`                 | Instructions to build the Docker image |
+| `.github/workflows/main.yml` | GitHub Actions CI/CD workflow          |
+| `README.md`                  | Project documentation                  |
+
+---
+
+## 🔄 CI/CD Workflow
+
+The project follows this workflow:
+
+```text
+Local Development
+       ↓
+Node.js Application
+       ↓
+Git Add & Commit
+       ↓
+Git Push
+       ↓
+GitHub main Branch
+       ↓
+GitHub Actions
+       ↓
+Checkout Code
+       ↓
+Setup Node.js 20
+       ↓
+Install Dependencies
+       ↓
+Validate server.js
+       ↓
+Login to Docker Hub
+       ↓
+Build Docker Image
+       ↓
+Push Docker Image
+       ↓
+Docker Hub
+```
+
+### Workflow in Simple Terms
+
+1. Created the Node.js application.
+2. Tested the application locally.
+3. Created the Dockerfile.
+4. Initialized the Git repository.
+5. Created the initial commit.
+6. Connected the local repository to GitHub.
+7. Pushed the project to the `main` branch.
+8. Created the GitHub Actions workflow.
+9. Configured Docker Hub credentials using GitHub Secrets.
+10. GitHub Actions automatically installed dependencies.
+11. The workflow validated the Node.js source code.
+12. The workflow logged in to Docker Hub.
+13. The Docker image was built.
+14. The Docker image was pushed to Docker Hub.
+15. The successful image was verified on Docker Hub.
+
+---
+
+## ⚙️ GitHub Actions Pipeline
+
+The workflow file is:
+
+```text
+.github/workflows/main.yml
+```
+
+### Pipeline Stages
+
+```text
+Checkout Code
+      ↓
+Setup Node.js 20
+      ↓
+Install Dependencies
+      ↓
+Validate Node.js Code
+      ↓
+Login to Docker Hub
+      ↓
+Build Docker Image
+      ↓
+Push Docker Image
+```
+
+The workflow is triggered when code is pushed to the `main` branch.
+
+It can also be manually triggered using GitHub Actions.
+
+---
+
+## 🐳 Docker Configuration
+
+The application is containerized using Docker.
+
+### Docker Image
+
+The image is built using:
+
+```bash
+docker build -t task-1-cicd .
+```
+
+### Run Locally
+
+```bash
+docker run -p 3000:3000 task-1-cicd
+```
+
+The application can then be accessed at:
+
+```text
+http://localhost:3000
 ```
 
 ---
 
-## 💻 Application
+## 💻 Node.js Application
 
 The project contains a simple Node.js HTTP server.
 
-When the application is running, it returns:
+When the application runs successfully, it displays:
 
 ```text
 Hello from Node.js CI/CD Pipeline!
 ```
 
-### Run Locally
+### Run Without Docker
 
 ```bash
 npm install
@@ -134,7 +220,7 @@ Open:
 http://localhost:3000
 ```
 
-Stop the application with:
+The server can be stopped using:
 
 ```text
 Ctrl + C
@@ -142,76 +228,22 @@ Ctrl + C
 
 ---
 
-## 🐳 Docker
+## 🔐 GitHub Secrets
 
-### Build the Docker Image
+Docker Hub authentication is handled using **GitHub Actions Secrets**.
 
-```bash
-docker build -t task-1-cicd .
-```
+The following secrets were configured:
 
-### Run the Docker Container
-
-```bash
-docker run -p 3000:3000 task-1-cicd
-```
-
-Then open:
-
-```text
-http://localhost:3000
-```
-
----
-
-## ⚙️ GitHub Actions Workflow
-
-The CI/CD workflow is located at:
-
-```text
-.github/workflows/main.yml
-```
-
-The workflow runs automatically when code is pushed to the `main` branch.
-
-It can also be triggered manually using GitHub Actions.
-
-### Workflow Stages
-
-```text
-Checkout Code
-      ↓
-Setup Node.js 20
-      ↓
-Install Dependencies
-      ↓
-Validate server.js
-      ↓
-Login to Docker Hub
-      ↓
-Build Docker Image
-      ↓
-Push Image to Docker Hub
-```
-
----
-
-## 🔐 GitHub Actions Secrets
-
-Docker Hub credentials are stored securely using **GitHub Actions Secrets**.
-
-Go to:
-
-**Repository → Settings → Secrets and variables → Actions**
-
-Add:
-
-| Secret               | Value                            |
+| Secret               | Purpose                          |
 | -------------------- | -------------------------------- |
 | `DOCKERHUB_USERNAME` | Docker Hub username              |
 | `DOCKERHUB_TOKEN`    | Docker Hub Personal Access Token |
 
-The workflow accesses them using:
+Secrets were configured from:
+
+**GitHub Repository → Settings → Secrets and variables → Actions**
+
+The workflow accesses the credentials using:
 
 ```text
 ${{ secrets.DOCKERHUB_USERNAME }}
@@ -220,39 +252,29 @@ ${{ secrets.DOCKERHUB_TOKEN }}
 
 ### 🔒 Security
 
-The Docker Hub Personal Access Token is **not stored directly inside the workflow file**.
+The Docker Hub Personal Access Token is not stored directly inside the workflow file.
 
 ---
 
-## 🧪 Code Validation
+## 🧪 Application Validation
 
-The pipeline uses:
+The GitHub Actions workflow validates the JavaScript syntax using:
 
 ```bash
 node --check server.js
 ```
 
-This checks the JavaScript syntax of `server.js`.
+This confirms that the JavaScript file has valid syntax.
 
-> This is a syntax validation step, not a complete automated test suite.
-
----
-
-## 🐳 Docker Hub Image
-
-The successful pipeline pushes the Docker image:
-
-```text
-nileshyadavny/task-1-cicd:latest
-```
-
-The `latest` tag represents the Docker image produced by the successful pipeline.
+> This is a syntax validation step and not a complete automated application test suite.
 
 ---
 
-## ❌ Error Faced During Implementation
+## ❌ Error Encountered During Implementation
 
-### Error
+### Docker Hub Login Error
+
+During the first GitHub Actions run, the Docker Hub login step failed with:
 
 ```text
 Error: Username and password required
@@ -260,11 +282,11 @@ Error: Username and password required
 
 ### Why Did It Happen?
 
-GitHub Actions could not authenticate with Docker Hub because the required Docker Hub credentials had not been configured as GitHub Secrets.
+The workflow expected Docker Hub credentials from GitHub Secrets, but the required secrets had not been configured yet.
 
-### Fix
+### Resolution
 
-Added:
+Configured:
 
 ```text
 DOCKERHUB_USERNAME
@@ -275,7 +297,7 @@ under:
 
 **GitHub Repository → Settings → Secrets and variables → Actions**
 
-Then the workflow was run again.
+After configuring the secrets, the workflow was run again.
 
 ### Result
 
@@ -285,73 +307,88 @@ Docker Image Build   ✅
 Docker Image Push    ✅
 ```
 
+The complete GitHub Actions workflow then finished successfully.
+
 ---
 
-## 📊 Final Result
+## 📦 Docker Hub
+
+The Docker image was pushed to Docker Hub using:
 
 ```text
-GitHub Push
-     ↓
-GitHub Actions
-     ↓
-Node.js Validation ✅
-     ↓
-Docker Build ✅
-     ↓
-Docker Hub Login ✅
-     ↓
-Docker Image Push ✅
+nileshyadavny/task-1-cicd:latest
 ```
 
-The Docker image was successfully built and pushed to Docker Hub.
+The `latest` tag represents the Docker image produced by the successful CI/CD pipeline.
 
 ---
 
-## 🧠 What I Learned
+## 📚 Documentation
 
-* Git repository and GitHub workflow
+The project documentation covers:
+
+* Node.js application setup
+* Local application testing
+* Docker configuration
+* Git repository setup
+* GitHub repository setup
+* GitHub Actions workflow
+* Docker Hub authentication
+* GitHub Secrets
+* CI/CD workflow
+* Error encountered during implementation
+* Error resolution
+* Final verification
+
+---
+
+## 🎓 What I Learned
+
+Through this project, I learned and practiced:
+
 * Basic Node.js application setup
+* Git repository management
+* GitHub repository workflow
 * Docker image creation
 * Docker container execution
 * GitHub Actions
 * CI/CD pipeline automation
 * GitHub Actions Secrets
-* Docker Hub image publishing
-* Troubleshooting CI/CD failures
+* Docker Hub authentication
+* Docker image publishing
+* CI/CD troubleshooting
+* Basic DevOps workflow
 
 ---
 
-## 📖 Key Concepts
+## 🧠 Key Concepts
 
 <details>
-<summary>🔹 What is CI?</summary>
+<summary>Click to view CI/CD concepts</summary>
 
-**Continuous Integration (CI)** is the practice of automatically validating code changes when developers push code to a shared repository.
+### Continuous Integration
+
+Continuous Integration automatically validates code changes when developers push code to a shared repository.
 
 In this project, GitHub Actions installs dependencies and validates the Node.js source code.
 
-</details>
+### Continuous Delivery
 
-<details>
-<summary>🔹 What is CD?</summary>
+Continuous Delivery automates the steps performed after code validation.
 
-**Continuous Delivery/Deployment (CD)** automates the steps performed after code validation.
+In this project, the pipeline builds a Docker image and pushes it to Docker Hub.
 
-In this project, the successful pipeline builds a Docker image and pushes it to Docker Hub.
+### Docker
 
-</details>
+Docker packages the application and its runtime environment into a container image.
 
-<details>
-<summary>🔹 Why Docker?</summary>
+### GitHub Actions
 
-Docker packages an application and its runtime environment into a container image, helping the application run consistently across environments.
+GitHub Actions automates the CI/CD workflow whenever changes are pushed to the repository.
 
-</details>
+### GitHub Secrets
 
-<details>
-<summary>🔹 Why GitHub Secrets?</summary>
-
-GitHub Secrets allow sensitive values such as Docker Hub tokens to be used by workflows without exposing them directly in the source code.
+GitHub Secrets securely store sensitive values such as Docker Hub credentials without putting them directly into the workflow file.
 
 </details>
 
@@ -368,24 +405,101 @@ Possible improvements for the next version:
 * Add monitoring
 * Add rollback strategy
 
+> These features are not part of the current implementation.
+
 ---
 
-## 📚 Repository Workflow
+## 📊 Final Pipeline Result
 
 ```text
-Write Code
-    ↓
-Test Locally
-    ↓
-Git Add
-    ↓
-Git Commit
-    ↓
-Git Push
-    ↓
+GitHub Push
+     ↓
 GitHub Actions
-    ↓
-Docker Build
-    ↓
-Docker Hub
+     ↓
+Checkout Code              ✅
+     ↓
+Setup Node.js              ✅
+     ↓
+Install Dependencies       ✅
+     ↓
+Validate Code              ✅
+     ↓
+Docker Hub Login           ✅
+     ↓
+Docker Image Build         ✅
+     ↓
+Docker Image Push          ✅
+     ↓
+Docker Hub                 ✅
 ```
+
+---
+
+## 🏷️ Project Scope
+
+### Implemented
+
+* Node.js application
+* Git repository
+* GitHub repository
+* Dockerfile
+* Docker image
+* GitHub Actions CI/CD
+* GitHub Secrets
+* Docker Hub authentication
+* Docker Hub image push
+* CI/CD troubleshooting
+* Project documentation
+
+### Not Implemented
+
+* AWS EC2 deployment
+* Production deployment
+* Cloud hosting
+* Automated production release
+* Monitoring
+
+---
+
+## ✅ Project Status
+
+| Requirement               | Status               |
+| ------------------------- | -------------------- |
+| Node.js application       | ✅ Complete           |
+| Local application testing | ✅ Complete           |
+| Dockerfile                | ✅ Complete           |
+| Docker image build        | ✅ Complete           |
+| Git repository            | ✅ Complete           |
+| GitHub repository         | ✅ Complete           |
+| GitHub Actions workflow   | ✅ Complete           |
+| Node.js validation        | ✅ Complete           |
+| Docker Hub authentication | ✅ Complete           |
+| GitHub Secrets            | ✅ Complete           |
+| Docker Hub image push     | ✅ Complete           |
+| CI/CD troubleshooting     | ✅ Complete           |
+| README documentation      | ✅ Complete           |
+| AWS deployment            | ⏳ Future Improvement |
+
+---
+
+## 🏁 Conclusion
+
+This project demonstrates a practical **Node.js CI/CD workflow using GitHub Actions and Docker**.
+
+The project successfully automates code validation, Docker image building, and Docker Hub image publishing.
+
+It provides a foundation for extending the pipeline later with **AWS deployment, automated testing, monitoring, and production delivery**.
+
+---
+
+## 🚀 Final Result
+
+**Node.js Application → GitHub → GitHub Actions → Docker → Docker Hub**
+
+### Docker Image
+
+```text
+nileshyadavny/task-1-cicd:latest
+```
+
+---
